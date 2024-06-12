@@ -4,9 +4,12 @@ const Contact = ({ contact }) => (
   <Link to={`/contacts/${contact.id}`} className="contact__item">
     <div className="contact__header">
       <div className="contact__image">
-        <img src={contact.photoUrl} alt={contact.name} />
+        <img
+          src={contact.photoUrl || "/assets/icons/profile-placeholder.svg"}
+          alt={contact.name}
+        />
       </div>
-      <div className="contact__details">
+      <div>
         <p className="contact_name">{contact?.name?.substring(0, 15)} </p>
         <p className="contact_title">{contact.title}</p>
       </div>

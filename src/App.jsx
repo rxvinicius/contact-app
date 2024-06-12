@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+
 import { getContacts } from "./api/ContactService";
-import { Header } from "./components";
+import { ContactList, Header } from "./components";
 
 function App() {
   const [data, setData] = useState({});
@@ -27,6 +29,24 @@ function App() {
   return (
     <>
       <Header toogleModal={toogleModal} nbOfContacts={data.totalElements} />
+
+      <main className="main">
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Navigate to="/contacts" />} />
+            <Route
+              path="/contacts"
+              element={
+                <ContactList
+                  data={data}
+                  currentPage={currentPage}
+                  getAllContacts={getAllContacts}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </main>
     </>
   );
 }

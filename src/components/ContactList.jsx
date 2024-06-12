@@ -6,12 +6,14 @@ const ContactList = ({ data, currentPage, getAllContacts }) => (
       <div>No Contacts. Please add a new contact.</div>
     ) : (
       <>
+        {/* Contact info */}
         <ul className="contact__list">
-          {data.content.map((contact) => (
+          {data?.content?.map((contact) => (
             <Contact contact={contact} key={contact.id} />
           ))}
         </ul>
 
+        {/* Pagination */}
         {data.totalPages > 1 && (
           <div className="pagination">
             <a
