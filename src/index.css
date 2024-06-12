@@ -263,7 +263,7 @@ i {
 
 .contact__item {
   width: 100%;
-  background-color: #ecf1f1;
+  background-color: var(--dark-gray);
   padding: 0.88rem;
   border-radius: var(--radius-5);
   cursor: pointer;
