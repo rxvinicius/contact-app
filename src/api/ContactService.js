@@ -20,7 +20,7 @@ export async function updateContact(contact) {
 }
 
 export async function updatePhoto(formData) {
-  return await api.post(`contacts/photo`, formData);
+  return await api.put(`contacts/photo`, formData);
 }
 
 export async function deleteContact(contactId) {
