@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { getContacts, saveContact, updatePhoto } from "./api/ContactService";
-import { ContactList, Header } from "./components";
+import { ContactDetail, ContactList, Header } from "./components";
 
 function App() {
   const modalRef = useRef();
@@ -52,15 +52,11 @@ function App() {
 
     try {
       const { data } = await saveContact(values);
-      console.log("voltei");
-
       const formData = new FormData();
       formData.append("file", file, file.name);
       formData.append("id", data.id);
 
-      console.log("indo");
       const { data: photoUrl } = await updatePhoto(formData);
-      console.log("voltando de novo");
 
       getAllContacts();
       toggleModal(false);
@@ -68,6 +64,26 @@ function App() {
     } catch (error) {
       console.log(error);
       // toastError(error.message);
+    }
+  };
+
+  const updateContact = async (contact) => {
+    try {
+      await saveContact(contact);
+      await getAllContacts();
+    } catch (error) {
+      console.log(error);
+      toastError(error.message);
+    }
+  };
+
+  const updateImage = async (formData) => {
+    try {
+      await updatePhoto(formData);
+      await getAllContacts();
+    } catch (error) {
+      console.log(error);
+      toastError(error.message);
     }
   };
 
@@ -95,6 +111,15 @@ function App() {
                   data={data}
                   currentPage={currentPage}
                   getAllContacts={getAllContacts}
+                />
+              }
+            />
+            <Route
+              path="/contacts/:id"
+              element={
+                <ContactDetail
+                  updateContact={updateContact}
+                  updateImage={updateImage}
                 />
               }
             />
@@ -181,6 +206,7 @@ function App() {
                   onChange={(event) => setFile(event.target.files[0])}
                   ref={fileRef}
                   name="photo"
+                  accept="image/*"
                   required
                 />
               </div>

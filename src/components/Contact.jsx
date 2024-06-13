@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 
+const formatText = (text, size = 20) =>
+  text ? `${text.substring(0, size)}${text.length >= size ? "..." : ""}` : "";
+
 const Contact = ({ contact }) => (
   <Link to={`/contacts/${contact.id}`} className="contact__item">
     <div className="contact__header">
@@ -9,15 +12,16 @@ const Contact = ({ contact }) => (
           alt={contact.name}
         />
       </div>
-      <div>
-        <p className="contact_name">{contact?.name?.substring(0, 15)} </p>
+
+      <div className="container_contact_name_photo">
+        <p className="contact_name">{formatText(contact?.name, 20)}</p>
         <p className="contact_title">{contact.title}</p>
       </div>
     </div>
 
     <div className="contact__body">
       <p>
-        <i className="bi bi-envelope"></i> {contact.email.substring(0, 20)}
+        <i className="bi bi-envelope"></i> {formatText(contact?.email)}
       </p>
       <p>
         <i className="bi bi-geo"></i> {contact.address}
@@ -26,7 +30,7 @@ const Contact = ({ contact }) => (
         <i className="bi bi-telephone"></i> {contact.phone}
       </p>
       <p>
-        {contact.status === "Active" ? (
+        {contact.status.toLocaleLowerCase() === "active" ? (
           <i className="bi bi-check-circle"></i>
         ) : (
           <i className="bi bi-x-circle"></i>

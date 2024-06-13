@@ -14,7 +14,7 @@ const ContactList = ({ data, currentPage, getAllContacts }) => (
         </ul>
 
         {/* Pagination */}
-        {data.totalPages > 1 && (
+        {data?.totalPages > 1 && (
           <div className="pagination">
             <a
               onClick={() => getAllContacts(currentPage - 1)}
