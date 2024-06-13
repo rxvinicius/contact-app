@@ -118,7 +118,7 @@
 /* SCROLL BAR */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -127,7 +127,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: hsl(0, 0%, 80%);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -221,7 +221,7 @@ i {
   color: var(--white);
   background-color: var(--selective-blue);
   font-size: 0.8rem;
-  padding: 3px 10px;
+  padding: 7px 10px;
   white-space: normal;
   border-radius: var(--radius-5);
   box-shadow: 0 0 2px var(--black_80);
@@ -286,28 +286,35 @@ i {
 
 .contact__image img {
   width: 100%;
-  border: 3px solid var(--selective-blue);
+  border: 3px solid var(--selective-blue-2);
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-circle);
 }
 
+.container_contact_name_photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
 .contact_name {
-  color: #3c3f3f;
-  font-size: 1.25rem;
-  text-align: center;
+  color: var(--light-gray);
+  font-size: 18px;
+  text-align: left;
   font-weight: 600;
 }
 
 .contact_title {
   font-size: 11px;
-  background-color: #dfe7e8;
-  color: var(--kappel);
-  text-align: center;
+  background-color: var(--selective-blue-2);
+  color: var(--light-gray);
+  text-align: left;
   border-radius: 13px;
   font-weight: 600;
-  padding: 2px;
+  padding: 2px 7px;
 }
 
 .contact__body {
@@ -393,7 +400,7 @@ i {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  background-color: #ecf1f1;
+  background-color: var(--dark-gray);
   padding: 10px;
   border-radius: var(--radius-5);
 }
@@ -408,7 +415,7 @@ i {
 }
 
 .profile__name {
-  color: #3c3f3f;
+  color: var(--light-gray);
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.2rem;
@@ -416,12 +423,12 @@ i {
 
 .profile__muted {
   font-size: 12px;
-  color: #75777a;
+  color: var(--light-gray-2);
   margin-bottom: 1rem;
 }
 
 .profile__settings {
-  background-color: #ecf1f1;
+  background-color: var(--dark-gray);
   padding: 10px;
   border-radius: var(--radius-5);
 }
@@ -467,11 +474,11 @@ i {
 .modal__header i::before {
   border-radius: 50%;
   padding: 0.5rem;
-  background-color: hsl(0, 0%, 90%);
+  background-color: var(--dark-gray);
 }
 
 .modal__header i:hover::before {
-  background-color: hsl(0, 0%, 90%);
+  background-color: var(--dark-gray);
 }
 
 .modal__body {

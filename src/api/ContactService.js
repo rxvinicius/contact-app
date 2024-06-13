@@ -11,7 +11,7 @@ export async function getContacts(page = 0, size = 10) {
   return await api.get(url);
 }
 
-export async function getContact(contactId) {
+export async function getContactById(contactId) {
   return await api.get(`contacts/${contactId}`);
 }
 
@@ -20,7 +20,7 @@ export async function updateContact(contact) {
 }
 
 export async function updatePhoto(formData) {
-  return await api.post(`contacts/photo`, formData);
+  return await api.put(`contacts/photo`, formData);
 }
 
 export async function deleteContact(contactId) {
