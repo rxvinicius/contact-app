@@ -348,11 +348,10 @@ i {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
-  margin-bottom: 10rem;
 }
 
 .pagination a {
-  color: black;
+  color: var(--light-gray);
   padding: 5px 10px;
   text-decoration: none;
   transition: background-color 0.3s;
@@ -371,13 +370,13 @@ i {
 }
 
 .pagination a.active {
-  background-color: var(--selective-blue);
+  background-color: var(--selective-blue-2);
   color: white;
-  border: 1px solid var(--selective-blue);
+  border: 1px solid var(--selective-blue-2);
 }
 
 .pagination a:hover:not(.active) {
-  background-color: #ecf1f1;
+  background-color: var(--selective-blue-3);
 }
 
 /* PROFILE */

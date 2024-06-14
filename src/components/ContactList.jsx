@@ -18,7 +18,7 @@ const ContactList = ({ data, currentPage, getAllContacts }) => (
           <div className="pagination">
             <a
               onClick={() => getAllContacts(currentPage - 1)}
-              className={currentPage === 0 && "disabled"}
+              className={currentPage === 0 ? "disabled" : ""}
             >
               &laquo;
             </a>
@@ -27,7 +27,7 @@ const ContactList = ({ data, currentPage, getAllContacts }) => (
               <a
                 key={index}
                 onClick={() => getAllContacts(page)}
-                className={currentPage === page && "active"}
+                className={currentPage === page ? "active" : ""}
               >
                 {page + 1}
               </a>
@@ -35,7 +35,7 @@ const ContactList = ({ data, currentPage, getAllContacts }) => (
 
             <a
               onClick={() => getAllContacts(currentPage + 1)}
-              className={currentPage + 1 === data.totalPages && "disabled"}
+              className={currentPage + 1 === data.totalPages ? "disabled" : ""}
             >
               &raquo;
             </a>
