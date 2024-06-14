@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getContactById } from "../api/ContactService";
 
-const ContactDetail = ({ updateContact, updateImage }) => {
+const ContactDetail = ({ updateContact, updateImage, deleteContact }) => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const inputRef = useRef();
   const [contact, setContact] = useState({
@@ -20,6 +21,11 @@ const ContactDetail = ({ updateContact, updateImage }) => {
 
   const onChange = (event) => {
     setContact({ ...contact, [event.target.name]: event.target.value });
+  };
+
+  const handleDeleteContact = async () => {
+    await deleteContact(contact.id);
+    navigate("/");
   };
 
   const onUpdateContact = async (event) => {
@@ -149,6 +155,13 @@ const ContactDetail = ({ updateContact, updateImage }) => {
               </div>
             </div>
             <div className="form_footer">
+              <button
+                onClick={handleDeleteContact}
+                type="button"
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
               <button type="submit" className="btn">
                 Save
               </button>

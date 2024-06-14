@@ -23,6 +23,6 @@ export async function updatePhoto(formData) {
   return await api.put(`contacts/photo`, formData);
 }
 
-export async function deleteContact(contactId) {
+export async function deleteContactById(contactId) {
   return await api.delete(`contacts/${contactId}`, contactId);
 }

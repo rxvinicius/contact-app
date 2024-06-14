@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { getContacts, saveContact, updatePhoto } from "./api/ContactService";
+import {
+  deleteContactById,
+  getContacts,
+  saveContact,
+  updatePhoto,
+} from "./api/ContactService";
 import { ContactDetail, ContactList, Header } from "./components";
 
 function App() {
@@ -63,7 +68,6 @@ function App() {
       clearModal();
     } catch (error) {
       console.log(error);
-      // toastError(error.message);
     }
   };
 
@@ -73,7 +77,15 @@ function App() {
       await getAllContacts();
     } catch (error) {
       console.log(error);
-      toastError(error.message);
+    }
+  };
+
+  const deleteContact = async (contactId) => {
+    try {
+      await deleteContactById(contactId);
+      await getAllContacts();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -83,7 +95,6 @@ function App() {
       await getAllContacts();
     } catch (error) {
       console.log(error);
-      toastError(error.message);
     }
   };
 
@@ -120,6 +131,7 @@ function App() {
                 <ContactDetail
                   updateContact={updateContact}
                   updateImage={updateImage}
+                  deleteContact={deleteContact}
                 />
               }
             />
